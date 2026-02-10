@@ -1,6 +1,23 @@
+import Heading from "./components/Heading";
+import { Section } from "./components/section";
+import Counter from "./components/Counter";
+import List from "./components/List";
+import { useState } from "react";
+
 function App() {
+
+  const [count,setCount] = useState<number>(1);
+
   return (
-    <h1>Hello!</h1>
+    <>
+      <Heading title={"Hello"}/>
+      <Section title={"Different Title"}>
+        This is my Section
+      </Section>
+      <Counter setCount={setCount}>Count is {count}</Counter>
+      <List items={["Coffee", "Tacos", "Code"]} render={(item: string) => <span className="bold">{item}</span>} />
+
+    </>
   )
 }
 
