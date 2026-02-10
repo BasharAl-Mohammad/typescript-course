@@ -12,28 +12,22 @@ const initApp = (): void => {
         event.preventDefault();
         const input = document.getElementById('newItem') as HTMLInputElement;
         const newEntryText: string = input.value.trim();
-        if (newEntryText === '') {
-            alert('Please enter a valid item.');
-            return;
-        }
+        if (!newEntryText.length) return
 
-        const itemId: number = fullList.list.length > 0 ? parseInt(fullList.list[fullList.list.length - 1].id) + 1 : 1;
+    const itemId: number = fullList.list.length ? parseInt(fullList.list[fullList.list.length - 1].id) + 1 : 1;
+    const newItem = new ListItem(itemId.toString(), newEntryText);
+    fullList.addItem(newItem);
+    template.render(fullList);
+  })
 
-        const newItem: ListItem = new ListItem(itemId.toString(), newEntryText);
-        fullList.addItem(newItem);
-        template.render(fullList);
-    })
+  const clearItems = document.getElementById('clearItemsButton') as HTMLButtonElement;
+  clearItems.addEventListener('click', (): void => {
+    fullList.clearList();
+    template.clear();
+  })
 
-    const clearItems = document.getElementById('clearItemsButton') as HTMLButtonElement;
-    clearItems.addEventListener('click', (): void => {
-        fullList.clearList();
-        template.clear();
-    })
-
-    fullList.load()
-    template.render(fullList)
-
+  fullList.load()
+  template.render(fullList)
 }
 
-document.addEventListener('DOMContentLoaded', initApp)
-
+document.addEventListener("DOMContentLoaded", initApp) 
