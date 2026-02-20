@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react"
 
 type CounterProps = {
     setCount: React.Dispatch<React.SetStateAction<number>>,
     children: ReactNode
 }
 
-const Counter = ({ setCount, children}: CounterProps) => {
+const Counter = ({setCount,children}: CounterProps) => {
 
     return (
         <>
@@ -15,4 +15,5 @@ const Counter = ({ setCount, children}: CounterProps) => {
         </>
     )
 }
-export default Counter;
+
+export default Counter

@@ -1,11 +1,11 @@
-import type { ReactElement } from "react";
+import type { ReactElement } from "react"
 
-type HeadingProps = {title: string}
+type HeadingProps = { title: string }
 
-const Heading = ({title} : HeadingProps) : ReactElement => {
+const Heading = ( {title}: HeadingProps): ReactElement => {
     return (
         <h1>{title}</h1>
     )
 }
 
-export default Heading;
+export default Heading
